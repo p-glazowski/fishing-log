@@ -14,6 +14,7 @@ const brandSchema = new mongoose.Schema(
     },
     originCountry: {
       type: String,
+      default: 'Unknown',
       trim: true,
     },
   },

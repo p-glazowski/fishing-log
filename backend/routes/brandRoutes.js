@@ -1,7 +1,16 @@
 const express = require('express');
-const route = express.Router();
-const brandController = require('../controllers/brandController');
+const router = express.Router();
 
-route.get('/', brandController.getAllBrands);
+const {
+  getAllBrands,
+  getBrandById,
+  createBrand,
+  updateBrand,
+  deleteBrand,
+} = require('../controllers/brandController');
 
-module.exports = route;
+router.route('/').get(getAllBrands).post(createBrand);
+
+router.route('/:id').get(getBrandById).patch(updateBrand).delete(deleteBrand);
+
+module.exports = router;
